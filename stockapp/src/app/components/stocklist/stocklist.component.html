@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        Stocks
+      </div>
+      <div class="col-sm-12 col-md-8">
+        Graph
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th *ngFor="let col of displayColumns">{{col.text}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of listData" [routerLink]="[]" (click)="changSelection(item)">
+                    <th>{{item.name}}</th>
+                    <td>{{item.value}}</td>
+                    <td>
+                        {{item.name}}
+                    </td>
+                    <td>{{getTimeDiff(item.updatedAt)}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <linechart [data]="chartdata" showLabel="true" [title]="detailChartTitle"></linechart>
+        </div>
+    </div>
+</div>
